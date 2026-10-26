@@ -6,12 +6,16 @@ const { title, description, href, category } = Astro.props;
   {category && <span class="category">{category}</span>}
   <h3>{title}</h3>
   <p>{description}</p>
-  <a href={href} aria-label={`Explore ${title}`}>Explore <span aria-hidden="true">↗</span></a>
+  <a href={href} aria-label={`Explore ${title}`}>Explore <span aria-hidden="true">→</span></a>
 </article>
 <style>
   .ui-project-card { background:var(--ui-cream,#faf7f0); border:3px solid var(--ui-ink,#0a0a0a); padding:1.5rem; box-shadow:6px 6px 0 var(--ui-ink,#0a0a0a); }
   .category { font:700 .7rem monospace; text-transform:uppercase; color:var(--ui-blue,#1e3fb8); }
   h3 { font:400 2rem/1.1 var(--ui-font-display,Impact,sans-serif); text-transform:uppercase; margin:1rem 0; }
   p { font:400 1rem/1.6 var(--ui-font-body,Arial,sans-serif); }
-  a { font-weight:800; color:var(--ui-blue,#1e3fb8); }
+  a { display:inline-flex; align-items:center; gap:.35rem; font-weight:800; color:var(--ui-ink,#0a0a0a); text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1.5px; }
+  a:hover { text-decoration-thickness:3px; }
+  a span { transition:transform .15s ease; }
+  a:hover span { transform:translateX(3px); }
+  @media(prefers-reduced-motion:reduce){a span{transition:none}}
 </style>
