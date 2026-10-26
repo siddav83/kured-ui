@@ -1,0 +1,11 @@
+---
+interface Props { tone?:'yellow'|'blue'|'neutral' }
+const { tone = 'yellow' } = Astro.props;
+---
+<span class:list={['ui-tag',tone]}><slot /></span>
+<style>
+  .ui-tag { display:inline-block; border:2px solid var(--ui-ink,#0a0a0a); padding:.3rem .55rem; font:700 .7rem monospace; text-transform:uppercase; }
+  .yellow { background:var(--ui-yellow,#fbb829); }
+  .blue { background:var(--ui-blue,#1e3fb8); color:white; }
+  .neutral { background:var(--ui-cream,#faf7f0); }
+</style>

@@ -1,0 +1,12 @@
+:root {
+  --ui-cream: #FAF7F0;
+  --ui-yellow: #FBB829;
+  --ui-blue: #1E3FB8;
+  --ui-ink: #0A0A0A;
+  --ui-font-body: 'Outfit', 'DM Sans', Arial, sans-serif;
+  --ui-font-display: 'Anton', Impact, sans-serif;
+}
+:where(a,button):focus-visible { outline: 3px solid var(--ui-blue); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}

@@ -1,0 +1,13 @@
+---
+interface Props { title:string; eyebrow?:string; level?:'h1'|'h2'|'h3' }
+const { title, eyebrow, level:Heading = 'h2' } = Astro.props;
+---
+<div class="ui-heading">
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <Heading>{title}</Heading>
+  <slot />
+</div>
+<style>
+  .eyebrow { font:700 .75rem monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--ui-blue,#1e3fb8); }
+  h1,h2,h3 { margin:.4rem 0 1rem; font:400 clamp(2rem,5vw,4rem)/1.05 var(--ui-font-display,Impact,sans-serif); text-transform:uppercase; }
+</style>
