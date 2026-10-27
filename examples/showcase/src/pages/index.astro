@@ -1,0 +1,149 @@
+---
+import '@siddav83/kured-ui/styles.css';
+import Container from '@siddav83/kured-ui/components/Container.astro';
+import Button from '@siddav83/kured-ui/components/Button.astro';
+import Tag from '@siddav83/kured-ui/components/Tag.astro';
+import SectionHeading from '@siddav83/kured-ui/components/SectionHeading.astro';
+import ProjectCard from '@siddav83/kured-ui/components/ProjectCard.astro';
+
+const samples = [
+  { name: 'Button', file: 'src/components/Button.astro' },
+  { name: 'Tag', file: 'src/components/Tag.astro' },
+  { name: 'SectionHeading', file: 'src/components/SectionHeading.astro' },
+  { name: 'ProjectCard', file: 'src/components/ProjectCard.astro' },
+  { name: 'Container', file: 'src/components/Container.astro' },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A local showcase of reusable Astro components from Kured UI." />
+    <title>Kured UI — Component Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="topbar">
+      <Container>
+        <div class="topbar-inner">
+          <a class="wordmark" href="#top" aria-label="Kured UI showcase home">KURED<span>.</span> UI</a>
+          <span class="topbar-note">LOCAL SHOWCASE · UNRELEASED</span>
+        </div>
+      </Container>
+    </header>
+    <main id="top">
+      <Container>
+        <section class="intro">
+          <p class="eyebrow">DESIGN SYSTEM / ASTRO</p>
+          <h1>COMPONENT<br />PLAYGROUND<span class="dot">.</span></h1>
+          <p class="intro-copy">These are the actual components imported from the local <code>@siddav83/kured-ui</code> package. Change a component, then reload the showcase to inspect it.</p>
+          <div class="jump-links">
+            {samples.map((sample) => <a href={`#${sample.name.toLowerCase()}`}>{sample.name} <span aria-hidden="true">→</span></a>)}
+          </div>
+        </section>
+        <section class="component-section" id="button">
+          <div class="section-intro"><span class="number">01</span><h2>Button</h2><p>Link and button variants, with high-contrast outlines.</p></div>
+          <div class="panel">
+            <div class="demo-row">
+              <Button href="#projectcard" variant="primary">View projects</Button>
+              <Button href="#tag" variant="secondary">Learn more</Button>
+              <Button type="button" variant="secondary">Native button</Button>
+            </div>
+          </div>
+          <pre><code>{`<Button href="/projects" variant="primary">View projects</Button>`}</code></pre>
+        </section>
+        <section class="component-section" id="tag">
+          <div class="section-intro"><span class="number">02</span><h2>Tag</h2><p>Compact labels for technologies and categories.</p></div>
+          <div class="panel">
+            <div class="demo-row">
+              <Tag tone="yellow">In progress</Tag>
+              <Tag tone="blue">Astro</Tag>
+              <Tag tone="neutral">Open source</Tag>
+            </div>
+          </div>
+          <pre><code>{`<Tag tone="yellow">In progress</Tag>`}</code></pre>
+        </section>
+        <section class="component-section" id="sectionheading">
+          <div class="section-intro"><span class="number">03</span><h2>SectionHeading</h2><p>Consistent heading hierarchy across pages.</p></div>
+          <div class="panel heading-panel">
+            <SectionHeading eyebrow="FEATURED WORK" title="SELECTED PROJECTS" level="h2">
+              <p>Things designed, tested and built.</p>
+            </SectionHeading>
+          </div>
+          <pre><code>{`<SectionHeading eyebrow="FEATURED WORK" title="SELECTED PROJECTS" level="h2" />`}</code></pre>
+        </section>
+        <section class="component-section" id="projectcard">
+          <div class="section-intro"><span class="number">04</span><h2>ProjectCard</h2><p>Project overview cards. Links are black, underlined and use a right arrow.</p></div>
+          <div class="panel">
+            <div class="card-grid">
+              <ProjectCard title="Kured Food" category="ASTRO / CONTENT" description="An independent website documenting small practical food experiments." href="https://kuredfood.com/" />
+              <ProjectCard title="Kured UI" category="COMPONENT LIBRARY" description="A reusable set of Astro components and design tokens." href="https://github.com/siddav83/kured-ui" />
+            </div>
+          </div>
+          <pre><code>{`<ProjectCard title="Kured UI" description="Reusable Astro components" href="/projects/kured-ui" />`}</code></pre>
+        </section>
+        <section class="component-section" id="container">
+          <div class="section-intro"><span class="number">05</span><h2>Container</h2><p>A consistent maximum width that works across screen sizes.</p></div>
+          <div class="panel container-demo">
+            <Container maxWidth="560px">
+              <div class="container-inside">The outlined area is wrapped in <strong>Container</strong> and capped at <strong>560px</strong> wide.</div>
+            </Container>
+          </div>
+          <pre><code>{`<Container maxWidth="560px">Your content here</Container>`}</code></pre>
+        </section>
+        <section class="component-section" id="tokens">
+          <div class="section-intro"><span class="number">06</span><h2>Design tokens</h2><p>CSS custom properties shared by all components.</p></div>
+          <div class="token-grid">
+            <div><div class="swatch" style="background:var(--ui-yellow)"></div><span>Yellow · #FBB829</span></div>
+            <div><div class="swatch" style="background:var(--ui-blue)"></div><span>Blue · #1E3FB8</span></div>
+            <div><div class="swatch" style="background:var(--ui-cream)"></div><span>Cream · #FAF7F0</span></div>
+            <div><div class="swatch" style="background:var(--ui-ink)"></div><span>Ink · #0A0A0A</span></div>
+          </div>
+        </section>
+      </Container>
+    </main>
+    <footer><Container><div class="footer-inner"><strong>KURED UI</strong><span>Running locally · No npm release required</span></div></Container></footer>
+  </body>
+</html>
+<style is:global>
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--ui-cream,#FAF7F0); color:var(--ui-ink,#0A0A0A); font-family:var(--ui-font-body,Arial,sans-serif); }
+  *,*::before,*::after { box-sizing:border-box; }
+  a { color:var(--ui-ink,#0A0A0A); }
+  .topbar { background:var(--ui-ink,#0A0A0A); color:var(--ui-cream,#FAF7F0); }
+  .topbar-inner { min-height:72px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+  .wordmark { color:inherit; text-decoration:none; font-size:25px; font-weight:800; letter-spacing:-.075em; }
+  .wordmark span,.dot { color:var(--ui-yellow,#FBB829); }
+  .topbar-note { font:600 11px/1.3 monospace; letter-spacing:.05em; color:#c5c0b5; text-align:right; }
+  .intro { padding:clamp(50px,8vw,92px) 0 50px; border-bottom:2px solid var(--ui-ink,#0A0A0A); }
+  .eyebrow { color:var(--ui-blue,#1E3FB8); font:700 12px/1.4 monospace; letter-spacing:.1em; }
+  .intro h1 { margin:16px 0 18px; font:400 clamp(48px,9vw,110px)/.99 var(--ui-font-display,Impact,sans-serif); letter-spacing:-.01em; }
+  .intro-copy { font:400 clamp(16px,2vw,20px)/1.55 var(--ui-font-body,Arial,sans-serif); max-width:680px; }
+  .intro-copy code { font-size:.85em; background:#e9e2d5; padding:3px 5px; }
+  .jump-links { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:32px; }
+  .jump-links a { font-size:14px; font-weight:800; text-decoration:underline; text-underline-offset:4px; }
+  .jump-links a:hover { text-decoration-thickness:3px; }
+  .component-section { padding:40px 0 45px; border-bottom:1px solid #c8c0b3; scroll-margin-top:20px; }
+  .section-intro { display:grid; grid-template-columns:32px minmax(0,1fr); gap:0 12px; margin:0 0 22px; align-items:start; }
+  .section-intro .number { grid-row:span 2; padding-top:8px; color:var(--ui-blue,#1E3FB8); font:700 12px monospace; }
+  .section-intro h2 { font:400 clamp(28px,4vw,45px)/1.1 var(--ui-font-display,Impact,sans-serif); margin:0; text-transform:uppercase; }
+  .section-intro p { grid-column:2; margin:8px 0 0; color:#4b4843; line-height:1.5; }
+  .panel { border:1px solid #c8c0b3; background:#fffdf9; padding:clamp(18px,4vw,42px); overflow:hidden; }
+  .demo-row { display:flex; align-items:center; flex-wrap:wrap; gap:20px; }
+  .card-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:25px; padding:0 7px 9px 0; }
+  pre { max-width:100%; overflow-x:auto; border:1px solid #ded7ce; margin:9px 0 0; padding:13px 17px; background:#f3ede3; }
+  pre code { font:12px/1.6 monospace; white-space:pre; }
+  .heading-panel { background:var(--ui-cream,#FAF7F0); }
+  .container-demo { padding-inline:0; }
+  .container-inside { border:2px dashed var(--ui-blue,#1E3FB8); padding:25px; background:#e9edfc; line-height:1.6; }
+  .token-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:13px; }
+  .swatch { height:70px; border:1px solid #9f988b; }
+  .token-grid span { display:block; font:12px/1.4 monospace; margin-top:9px; }
+  footer { background:var(--ui-ink,#0A0A0A); color:var(--ui-cream,#FAF7F0); margin-top:55px; }
+  .footer-inner { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding:25px 0; font:13px var(--ui-font-body,Arial,sans-serif); }
+  @media(max-width:700px) { .topbar-note { font-size:9px; } .card-grid { grid-template-columns:1fr; } .token-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .intro h1 { word-break:break-word; } }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
