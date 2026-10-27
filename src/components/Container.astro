@@ -1,0 +1,8 @@
+---
+interface Props { maxWidth?: string }
+const { maxWidth = '1120px' } = Astro.props;
+---
+<div class="ui-container" style={`--ui-max:${maxWidth}`}><slot /></div>
+<style>
+  .ui-container { width:min(calc(100% - 40px),var(--ui-max)); margin-inline:auto; }
+</style>

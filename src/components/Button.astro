@@ -1,0 +1,17 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary';
+  type?: 'button' | 'submit' | 'reset';
+}
+const { href, variant = 'primary', type = 'button' } = Astro.props;
+---
+{href
+  ? <a href={href} class:list={['ui-button', variant]}><slot /></a>
+  : <button type={type} class:list={['ui-button', variant]}><slot /></button>}
+<style>
+  .ui-button { display:inline-flex; align-items:center; justify-content:center; padding:.85rem 1.25rem; border:3px solid var(--ui-ink,#0a0a0a); font:800 .9rem var(--ui-font-body,Arial,sans-serif); text-decoration:none; cursor:pointer; box-shadow:4px 4px 0 var(--ui-ink,#0a0a0a); }
+  .ui-button:hover { transform:translate(2px,2px); box-shadow:2px 2px 0 var(--ui-ink,#0a0a0a); }
+  .primary { background:var(--ui-yellow,#fbb829); color:var(--ui-ink,#0a0a0a); }
+  .secondary { background:var(--ui-cream,#faf7f0); color:var(--ui-ink,#0a0a0a); }
+</style>

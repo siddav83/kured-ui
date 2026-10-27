@@ -1,0 +1,17 @@
+{
+  "name": "@siddav83/kured-ui",
+  "version": "0.1.0",
+  "description": "Reusable Astro components and design tokens inspired by Kured Food",
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    "./styles.css": "./src/styles.css",
+    "./components/*": "./src/components/*"
+  },
+  "peerDependencies": {
+    "astro": "^5.0.0"
+  },
+  "license": "UNLICENSED"
+}
